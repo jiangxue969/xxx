@@ -1,0 +1,23 @@
+<html>
+    <head>
+		{% if title %}
+			<title>{{ title }} - blog</title>
+		{% else %}
+			<title>Welcome to blog!</title>
+		{% endif %}
+    </head>
+    <body>
+    <div>
+	    blog:
+	    <a href="{{ url_for('index') }}">Home</a>
+        {% if current_user.is_anonymous %}
+        <a href="{{ url_for('login') }}">Login</a>
+        {% else %}
+        <a href="{{ url_for('logout') }}">Logout</a>
+        {% endif %}
+    </div>
+
+	{% block content %}
+	{% endblock %}
+    </body>
+</html>
